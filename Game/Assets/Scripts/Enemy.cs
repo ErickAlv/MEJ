@@ -78,13 +78,13 @@ public class Enemy : MonoBehaviour, ITR {
             speedZ *= -1;
         }
     }
-    void OnCollisionStay(Collision collision)
+    /*void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Box")
         {
             enemyRigidbody.velocity = new Vector3(0, enemyRigidbody.velocity.y, 0);
         }
-    }
+    }*/
 
     public void OnDeath()
     {
