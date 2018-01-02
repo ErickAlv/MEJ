@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - DeathZone
   - CheckPoint
+  - End
+  - Box
   layers:
   - Default
   - TransparentFX
