@@ -10,8 +10,8 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
     public InputSettings inputSettings;
     private Rigidbody playerRigidbody;
     private Vector3 velocity;
-    private Quaternion targetRotation;
-    private float forwardInput, sidewaysInput, turnInput, jumpInput;
+    private Quaternion targetRotation, targetRotationY;
+    private float forwardInput, sidewaysInput, turnInput, jumpInput, turnY;
     public GameObject plat;
     public Transform spawn;
     public static Text playerStats;
@@ -35,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
         public string SIDEWAYS_AXIS = "Horizontal";
         public string TURN_AXIS = "Mouse X";
         public string JUMP_AXIS = "Jump";
+        public string TURN_AXIS_Y = "Mouse Y";
     }
 
     private class MyStatus : TRObject
@@ -68,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
         velocity = Vector3.zero;
         forwardInput = sidewaysInput = turnInput = jumpInput = 0;
         targetRotation = transform.rotation;
+        targetRotationY = transform.GetChild(0).rotation;
         playerRigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -167,6 +169,8 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
             sidewaysInput = Input.GetAxis(inputSettings.SIDEWAYS_AXIS);
         if (inputSettings.TURN_AXIS.Length != 0)
             turnInput = Input.GetAxis(inputSettings.TURN_AXIS);
+        if (inputSettings.TURN_AXIS_Y.Length != 0)
+            turnY = Input.GetAxis(inputSettings.TURN_AXIS_Y);
         if (inputSettings.JUMP_AXIS.Length != 0)
             jumpInput = Input.GetAxisRaw(inputSettings.JUMP_AXIS);
     }
@@ -189,6 +193,14 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
             turnInput * Time.deltaTime, Vector3.up);
         }
         transform.rotation = targetRotation;
+        if (Mathf.Abs(turnY) > 0)
+        {
+            targetRotationY *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
+            turnInput * Time.deltaTime, Vector3.up);
+            targetRotationY *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
+            turnY * Time.deltaTime, Vector3.left);
+        }
+        transform.GetChild(0).rotation = targetRotationY;
     }
 
     //add force to the Rigidbody depending on the input and on whether the GameObject is currently grounded
