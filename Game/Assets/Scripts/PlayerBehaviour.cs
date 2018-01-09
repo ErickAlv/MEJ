@@ -191,14 +191,16 @@ public class PlayerBehaviour : MonoBehaviour, ITR {
         {
             targetRotation *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
             turnInput * Time.deltaTime, Vector3.up);
+            targetRotationY *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
+            turnInput * Time.deltaTime, Vector3.up);
+            
         }
         transform.rotation = targetRotation;
         if (Mathf.Abs(turnY) > 0)
         {
             targetRotationY *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
-            turnInput * Time.deltaTime, Vector3.up);
-            targetRotationY *= Quaternion.AngleAxis(moveSettings.rotateVelocity *
             turnY * Time.deltaTime, Vector3.left);
+            
         }
         transform.GetChild(0).rotation = targetRotationY;
     }
