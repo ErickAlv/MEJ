@@ -422,7 +422,7 @@ MonoBehaviour:
   distanceAway: 5
   distanceUp: 1.5
   smooth: 100
-  followedObject: {fileID: 403253666}
+  followedObject: {fileID: 988192525}
 --- !u!114 &55529399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,6 +2007,7 @@ MonoBehaviour:
     SIDEWAYS_AXIS: Horizontal
     TURN_AXIS: Mouse X
     JUMP_AXIS: Jump
+    TURN_AXIS_Y: Mouse Y
   plat: {fileID: 0}
   spawn: {fileID: 2093259654}
 --- !u!23 &403253663
@@ -2072,7 +2073,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.9, y: 7.8, z: 150.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 988192525}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4452,6 +4454,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4451355589016268, guid: 2f3f2f948f26842238b8702d42de3f79,
     type: 2}
   m_PrefabInternal: {fileID: 976164605}
+--- !u!1 &988192524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 988192525}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988192525
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988192524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403253666}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &990119354
 GameObject:
   m_ObjectHideFlags: 0
